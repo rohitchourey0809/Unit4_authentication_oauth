@@ -27,6 +27,13 @@ const userschema = new mongoose.Schema(
 
    })
 
+
+//    <-------------------encrypt----------->
+userschema.methods.checkpassword = function(password)
+{ 
+     return bcrypt.compareSync(password,this.password)
+}
+
 //    <==================encrypt=============>
      const User = mongoose.model('user',userschema)
 
