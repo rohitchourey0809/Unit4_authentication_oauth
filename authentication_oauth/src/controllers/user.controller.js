@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get("/",async function (req, res) {
     try{
-     const userdata = await User.find().lean().exec()
+     const userdata = await User.find()
      console.log(userdata)
      return res.status(200).send({userdata})
     }catch(err){
