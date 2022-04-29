@@ -4,8 +4,8 @@ require('dotenv').config()
 
 
 const generateToken = (userdata) => {
-    console.log.process.env
-    return jwt.sign({userdata}, process.env.JWT_SECRET_KEY)
+    console.log(process.env.registerkey)
+    return jwt.sign({userdata}, process.env.registerkey)
 }
 
 const register = async(req,res) => {
@@ -19,19 +19,19 @@ const register = async(req,res) => {
     const userRegister = await User.create(req.body)
     console.log(userRegister)
    
-    console.log("password",process.env.jwt_registerkey)
+    console.log("password",process.env.registerkey)
   // <===============token=========>
 
   // var token = jwt.sign({userRegistrt}, process.env.register_key)
 
-    var token = jwt.sign({userRegister}, process.env.jwt_registerkey);
+    var token = jwt.sign({userRegister}, process.env.registerkey);
 
     
     return res.status(400).send({userRegister,token})
  }
   catch (err) {
       return res.status(500).send({message:err.message})
-  }
+            }
 }
 
 
@@ -48,7 +48,7 @@ const login = async(req,res) =>
         return res.status(500).send({message:"Email and passowrd not match!"})
     }  
     console.log(req.body.password,"poww")
-    const match =  userdata.checkPassword({Password:req.body.password});
+    const match =  userdata.checkPassword(req.body.password);
 
     if(!match)
     {

@@ -2,7 +2,7 @@ const express = require("express");
 const connect = require("./config/db");
 const Usercontroller = require("./controllers/user.controller")
 const {register,login} = require("./controllers/registerlogin")
-
+const productcontroller = require("./controllers/product.controller")
 const app = express();
 app.use(express.json())
 
@@ -11,6 +11,7 @@ app.post("/register",register)
 app.post("/login",login)
 
 app.use("/user",Usercontroller)
+app.use("/product",productcontroller)
 
 
 

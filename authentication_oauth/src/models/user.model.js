@@ -6,7 +6,7 @@ const userschema = new mongoose.Schema(
         name : {type:String, required: true},
         email : {type:String, required: true},
         password :{type:String, required: true},
-        type : [{type:String, required: true}]
+        role : [{type:String}]
 
 
     },
@@ -29,7 +29,7 @@ const userschema = new mongoose.Schema(
 
 
 //    <-------------------encrypt----------->
-userschema.methods.checkpassword = function(password)
+userschema.methods.checkPassword = function(password)
 { 
      return bcrypt.compareSync(password,this.password)
 }
